@@ -46,4 +46,8 @@ public class Member {
 		this.phoneNumber = phoneNumber;
 	}
 	
+	public String toString() {
+        return this.address + this.idNumber + this.name  + this.phoneNumber;
+    }
+
 }
