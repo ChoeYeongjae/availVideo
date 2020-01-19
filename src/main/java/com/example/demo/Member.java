@@ -45,9 +45,11 @@ public class Member {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
-	public String toString() {
-        return this.address + this.idNumber + this.name  + this.phoneNumber;
-    }
+
+	public String getMemberList() {
+		return this.getAddress() + "," +  this.getIdNumber() + "," 
+				+ this.getName() + "," + this.getPhoneNumber();
+
+	}
 
 }
