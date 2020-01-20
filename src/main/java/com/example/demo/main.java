@@ -8,16 +8,17 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class main {
 	
 	// 회원목록 리스트 가져오기 
 	// 공통적으로 같은 값이 유지되어야 하는 경우 static 사
 	static MemberManager membermanger = new MemberManager(); 
-			
 	
 	// 회원목록 저장  
-	public static void member_load(String files) {
+	public static void member_load() {
+		String files = "/Users/choeyeongjae/Desktop/회원목록.txt";
 		
 		try{
 			//파일 객체 생성 영화목록
@@ -76,7 +77,7 @@ public class main {
 			
 		try {
 			out = new BufferedWriter(new FileWriter("/Users/choeyeongjae/Desktop/회원목록.txt"));		
-			out.write(membermanger.Member_list());
+			out.write(membermanger.GetAllMemberString());
 		} catch (IOException e) {
 			System.err.println(e); // 에러가 있다면 메시지 출력
 			System.exit(1);
@@ -90,22 +91,55 @@ public class main {
 		}
 	}
 	
-	public static void main(String[] args) {
+	
+	public static void memberSignUp() {
 		
-		membermanger.sign_up("이현진","이현진1","이현진2","이현진");
-		membermanger.sign_up("이현진2","이현진3","이현진4","이현진5");
+		Scanner form_data = new Scanner(System.in);	
+				
+		System.out.println("---------회원가입--------");	
+		System.out.println("1.name");
+		String name_input = form_data.nextLine();
+		System.out.println("2.address");
+		String address_input = form_data.nextLine();
+		System.out.println("3.idNumber");
+		String idNumber_input = form_data.nextLine();
+		System.out.println("4.phoneNumber");
+		String phoneNumber_input = form_data.nextLine();
 		
-		//회원목록 
-		member_load("/Users/choeyeongjae/Desktop/회원목록.txt");
-		
-		//멤버 출
+		// 사용자가 입력한값을회원가입 메소드로값처
+		membermanger.sign_up(name_input, address_input, idNumber_input, phoneNumber_input);
+		// 회원가입이 완료되었으면 로드한 데이터와 현재 회원가입된 데이터를 txt파일에 출력 
 		member_txt_save();
+		System.out.println("회원가입완료");
+	}
+	
+	
+	public static void main(String[] args) {	
+
+		// 멤버 로드를 호출함으로써 member클래스에 값 대
+		member_load();
 		
-		//비디오대여목록
-//		video_save("/Users/choeyeongjae/Desktop/영화목록.txt");
-//		
 		
+		Scanner scanner = new Scanner(System.in);	
+		boolean isboolean = true;
 		
+		// isboolean값이 flase가 될때까지반
+		while(isboolean) {
+			
+		System.out.println("------ 비디오대여 프로그램 ------");
+		System.out.println("1. 회원가입 ");
+		System.out.println("2. 종료 ");
+		System.out.println("----------------------------");
+			
+		System.out.println("원하는 번호를 입력해주세요 ");
+		String user_input = scanner.nextLine();
 		
+		if(user_input.equals("1")) {
+			// 만약 유저가 입력한 값이 1인경우 메소드호출 
+			memberSignUp();
+		} else {
+			isboolean = false;
+		}
+		}
 	}
 }

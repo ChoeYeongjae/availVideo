@@ -49,7 +49,7 @@ public class MemberManager {
 	
 	// Member 리스트출력조회
 
-	public String Member_list() {
+	public String GetAllMemberString() {
 		String str = "";
 		
 		for (int i = 0 ; i < members.size() ; i++) {
