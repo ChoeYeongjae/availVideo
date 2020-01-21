@@ -43,14 +43,14 @@ public class main {
 		}
 	
 	//비디오 목 저장  
-	public static void video_load(String files) {
+	public static void video_load() {
 			
 		// VideoManger에 담을 객체생성함.
 		VideoManager videomanger = new VideoManager(); 
 				
 		try{
 			//파일 객체 생성   영화목록
-			File file = new File(files);
+			File file = new File("/Users/choeyeongjae/Desktop/영어목.txt");
 			//데이터처리 효율성때문에 BufferedReader를 사용함
 			BufferedReader bufReader = new BufferedReader(new InputStreamReader(new FileInputStream(file),"UTF-8"));
 			String line = "";
@@ -118,6 +118,8 @@ public class main {
 
 		// 멤버 로드를 호출함으로써 member클래스에 값 대
 		member_load();
+		// 비디오 로드
+		video_load();
 		
 		
 		Scanner scanner = new Scanner(System.in);	
