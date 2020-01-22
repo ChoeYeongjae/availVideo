@@ -5,7 +5,7 @@ public class Member {
 	String address;		// 주소 
 	String idNumber;	// 주민등록번호
 	String phoneNumber;	// 전화번호
-//
+
 	// 초기화할 값을 가진 생성자
 	public Member(String name, String address, String idNumber, String phoneNumber) {
 		this.name = name;
@@ -47,9 +47,8 @@ public class Member {
 	}
 
 	public String getMemberList() {
-		return this.getAddress() + "," +  this.getIdNumber() + "," 
-				+ this.getName() + "," + this.getPhoneNumber();
-
+		return this.getName() + "," +  this.getAddress() + "," 
+				+ this.getIdNumber() + "," + this.getPhoneNumber();
 	}
 
 }

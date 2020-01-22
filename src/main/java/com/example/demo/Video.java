@@ -49,7 +49,10 @@ public class Video {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-
 	
+	public String getVideoList() {
+		return this.getMovie_name() + "," +  this.getProduction_year() + "," 
+				+ this.getSuperVision() + "," + this.getGenre();
+	}
 	
 }

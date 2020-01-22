@@ -16,9 +16,10 @@ public class main {
 	// 공통적으로 같은 값이 유지되어야 하는 경우 static 사
 	static MemberManager membermanger = new MemberManager(); 
 	
+	final static String files = "src/main/java/com/example/demo/회원목록.txt";
+	
 	// 회원목록 저장  
 	public static void member_load() {
-		String files = "/Users/choeyeongjae/Desktop/회원목록.txt";
 		
 		try{
 			//파일 객체 생성 영화목록
@@ -50,7 +51,7 @@ public class main {
 				
 		try{
 			//파일 객체 생성   영화목록
-			File file = new File("/Users/choeyeongjae/Desktop/영어목.txt");
+			File file = new File("src/main/java/com/example/demo/영화목록.txt");
 			//데이터처리 효율성때문에 BufferedReader를 사용함
 			BufferedReader bufReader = new BufferedReader(new InputStreamReader(new FileInputStream(file),"UTF-8"));
 			String line = "";
@@ -76,7 +77,7 @@ public class main {
 		BufferedWriter out = null;
 			
 		try {
-			out = new BufferedWriter(new FileWriter("/Users/choeyeongjae/Desktop/회원목록.txt"));		
+			out = new BufferedWriter(new FileWriter(files));		
 			out.write(membermanger.GetAllMemberString());
 		} catch (IOException e) {
 			System.err.println(e); // 에러가 있다면 메시지 출력
@@ -127,7 +128,6 @@ public class main {
 		
 		// isboolean값이 flase가 될때까지반
 		while(isboolean) {
-			
 		System.out.println("------ 비디오대여 프로그램 ------");
 		System.out.println("1. 회원가입 ");
 		System.out.println("2. 종료 ");
