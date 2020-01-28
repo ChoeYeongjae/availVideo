@@ -11,11 +11,13 @@ public class MemberManager {
 	int index = 0;
 
 	// 회원가입 	
-	public void sign_up(String name,String addres,String idNumber,String phoneNumber) {
+	public Member sign_up(String name,String addres,String idNumber,String phoneNumber) {
 		
 		// 객체를 생성후 members list에 추가
 		Member member_info = new Member(name,addres,idNumber,phoneNumber);			
 		members.add(member_info);
+		
+		return member_info;
 	}
 	
 	// 회원목록
