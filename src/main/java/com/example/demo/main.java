@@ -152,6 +152,37 @@ public class main {
 		userVideoList.saveFile();
 		videoManager.rentVideo(video.getMovieName());
 	}
+	
+	// 비디오 반납 
+	public static void videoReturn() {
+		
+		Scanner videoName = new Scanner(System.in);
+
+		System.out.println("---------비디오반납--------");
+		System.out.println("이름을 입력하세요. ");
+		String nameInput = videoName.nextLine();
+
+		Member member = memberManager.getMemberByName(nameInput);
+
+		Video video = null;
+		while(video == null) {
+			System.out.println("비디오 반납 리스트");
+			System.out.println(userVideoList.rentList(member.getName()));
+			
+			System.out.println("비디오이름 입력해주세요. ");
+			String videoNameInput = videoName.nextLine();
+			
+			video = videoManager.getVideoReturnName(videoNameInput);
+			if(video == null)
+				System.out.println("반납 할 비디오가 존재하지 않습니다. 다시 입력해주세요.");
+		}
+		
+		// TODO: 반납 작업
+		videoManager.returnVideo(video.getMovieName());
+		userVideoList.rentRemove(member.getName(),video.getMovieName());
+		userVideoList.saveFile();
+		System.out.println("반납 완료 ");
+	}
 
 	// 비디오 대여 시 이름 비교
 //	public static void videoComparison(String nameInput) {
@@ -177,12 +208,16 @@ public class main {
 		member_load();
 		// 비디오 로드
 		video_load();
-		
+
 		userVideoList.loadFile();
 		for (String title : userVideoList.getRentList().values()) {
 		    videoManager.rentVideo(title);
 		}
-
+//		
+//		for (String title : userVideoList.getRentList().values()) {
+//			userVideoList.rentRemove(title);
+//		}
+		
 		Scanner scanner = new Scanner(System.in);
 		boolean isboolean = true;
 
@@ -191,7 +226,8 @@ public class main {
 			System.out.println("------ 비디오대여 프로그램 ------");
 			System.out.println("1. 회원가입 ");
 			System.out.println("2. 대여 ");
-			System.out.println("3. 종료 ");
+			System.out.println("3. 반납 ");
+			System.out.println("4. 종료 ");
 			System.out.println("----------------------------");
 
 			System.out.println("원하는 번호를 입력해주세요 ");
@@ -203,7 +239,10 @@ public class main {
 			} else if (user_input.equals("2")) {
 				// 만약 유저가 입력한 값이 2인경우메소드 호
 				videoRent();
-			} else {
+			}  else if (user_input.equals("3")) {
+				// 만약 유저가 입력한 값이 2인경우메소드 호
+				videoReturn();
+			}  else {
 				isboolean = false;
 			}
 		}

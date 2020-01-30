@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class UserVideoList {
 	// key : value 값으로 데이터를 저장한다.
@@ -30,6 +31,14 @@ public class UserVideoList {
 		rentList.put(name, title);
 	}
 
+	public void rentRemove(String name, String title) {
+		rentList.remove(name,title);
+	}
+	
+	public String rentList(String name) {
+		return rentList.get(name);
+	}
+	
 	public void saveFile() {
 
 		// TODO: 대여 목록 저장 
