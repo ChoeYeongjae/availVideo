@@ -8,14 +8,14 @@ public class VideoManager {
 	ArrayList<Video> availableVideoList = new ArrayList<Video>(); 
 
 	// 비디오 반납 리스트 클래스
-	ArrayList<Video> unAvailableVideoList = new ArrayList<Video>();
+	ArrayList<Video> unavailableVideoList = new ArrayList<Video>();
 
 
 	// 비디오 대여 
 	public void rentVideo(String vidoe_name) {
 		for(int i = 0 ; i < availableVideoList.size() ; i++) {
 			if(availableVideoList.get(i).getMovieName().equals(vidoe_name)) {
-				unAvailableVideoList.add(availableVideoList.get(i));
+				unavailableVideoList.add(availableVideoList.get(i));
 				availableVideoList.remove(availableVideoList.get(i));
 
 			}
@@ -24,10 +24,10 @@ public class VideoManager {
 
 	// 비디오 반납 
 	public void returnVideo(String vidoe_name_return) {
-		for(int i = 0 ; i < unAvailableVideoList.size() ; i++) {
-			if(unAvailableVideoList.get(i).getMovieName().equals(vidoe_name_return)) {
-				availableVideoList.add(unAvailableVideoList.get(i));
-				unAvailableVideoList.remove(unAvailableVideoList.get(i));
+		for(int i = 0 ; i < unavailableVideoList.size() ; i++) {
+			if(unavailableVideoList.get(i).getMovieName().equals(vidoe_name_return)) {
+				availableVideoList.add(unavailableVideoList.get(i));
+				unavailableVideoList.remove(unavailableVideoList.get(i));
 			}
 		}	
 	}
@@ -47,9 +47,9 @@ public class VideoManager {
 	public String GetAllVideoReturn() {
 		String str = "";
 
-		for (int i = 0 ; i < unAvailableVideoList.size() ; i++) {
+		for (int i = 0 ; i < unavailableVideoList.size() ; i++) {
 			// += 사용시 반복되면서 str에 계속 대입됨.
-			str += unAvailableVideoList.get(i).getMovieName() + "\r";
+			str += unavailableVideoList.get(i).getMovieName() + "\r";
 		}	
 		return str;
 	}
@@ -68,9 +68,9 @@ public class VideoManager {
 	// 비디오 반납리스트 확인 
 	public Video getVideoReturnName(String name) {
 
-		for(int i = 0 ; i < unAvailableVideoList.size() ; i++) {
-			if(unAvailableVideoList.get(i).getMovieName().equals(name)) {
-				return unAvailableVideoList.get(i);
+		for(int i = 0 ; i < unavailableVideoList.size() ; i++) {
+			if(unavailableVideoList.get(i).getMovieName().equals(name)) {
+				return unavailableVideoList.get(i);
 			}
 		}
 		return null;
